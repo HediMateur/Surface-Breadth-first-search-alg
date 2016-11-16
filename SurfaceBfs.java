@@ -20,12 +20,10 @@ class Node {
     char[][] map;
     int X;
     int Y;
-    boolean visited;
     public Node(char[][] map,int X,int Y){
        this.map=map;
        this.X=X;
        this.Y=Y;
-       this.visited = false;
     }
     public ArrayList<Node> getChildren(){
         ArrayList<Node> childNodes = new ArrayList<>();
@@ -55,33 +53,22 @@ class BreadthFirstSearch {
     }
     public int compute(){
         ArrayDeque<Node> queue = new ArrayDeque<>();
-        ArrayList<Node> explored = new ArrayList<>();
         queue.add(this.startNode);
         int k=0;
-        int com=map.length * map[0].length;
-        
-        while(explored.size()<com&&!queue.isEmpty()){
-            
+        int maxNodeNumber=map.length * map[0].length;
+        int comp=0;
+        while(comp<maxNodeNumber&&!queue.isEmpty()){
             Node current = queue.getFirst();
             queue.removeFirst();
-            if(map[current.Y][current.X]=='O'&&!current.visited){    
-                boolean tester= false;
-                //int somme = startNode.X-current.X+current.Y-startNode.Y+current.iterX+current.iterY;
-           /*     for(int i=0;i<explored.size();i++){
-                    if(current.X==explored.get(i).X&&current.Y==explored.get(i).Y){
-                        tester = true;
-                    }
-                }*/
-                
-                        map[current.Y][current.X]='V';
-                        k++;
-                    if(!current.getChildren().isEmpty()){
-                            queue.addAll(current.getChildren());
-                    }
-                    explored.add(current);
+            if(map[current.Y][current.X]=='O'){    
+                map[current.Y][current.X]='V';
+                k++;
+                if(!current.getChildren().isEmpty()){
+                    queue.addAll(current.getChildren());
+                    comp++;
+                }
             }
         }
-
         return k;
     }
 }
@@ -108,13 +95,7 @@ public class SurfaceBfs {
         Node startNode = new Node(map,X,Y);
         BreadthFirstSearch bfs = new BreadthFirstSearch(startNode, map);
         System.out.println(bfs.compute());
-        /*for (int i = 0; i < N; i++) {
-
-            // Write an action using System.out.println()
-            // To debug: System.err.println("Debug messages...");
-
-            System.out.println("answer");
-        }*/
+        
     }
     
 }
