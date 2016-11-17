@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package surfacebfs;
-
+//LINK TO THE PROBLEM : https://www.codingame.com/ide/62023168993c571c9cfb0e791644e12a8a81430
+//LINK TO THE PROBLEM : https://www.codingame.com/ide/62023168993c571c9cfb0e791644e12a8a81430
+//LINK TO THE PROBLEM : https://www.codingame.com/ide/62023168993c571c9cfb0e791644e12a8a81430
+//LINK TO THE PROBLEM : https://www.codingame.com/ide/62023168993c571c9cfb0e791644e12a8a81430
 import java.util.*;
 import java.io.*;
 import java.math.*;
@@ -72,30 +75,29 @@ class BreadthFirstSearch {
         return k;
     }
 }
-public class SurfaceBfs {
-
-    /**
-     * @param args the command line arguments
-     */
+//LINK TO THE PROBLEM : https://www.codingame.com/ide/62023168993c571c9cfb0e791644e12a8a81430
+//LINK TO THE PROBLEM : https://www.codingame.com/ide/62023168993c571c9cfb0e791644e12a8a81430
+//LINK TO THE PROBLEM : https://www.codingame.com/ide/62023168993c571c9cfb0e791644e12a8a81430
+class Solution {
     public static void main(String args[]) {
-        int L = 4;
-        int H = 4;
-        char [][]map=new char[H][L];
-        String row1="####";
-        String row2="##O#";
-        String row3="#OO#";
-        String row4 ="####";
-        map[0]=row1.toCharArray();
-        map[1]=row2.toCharArray();
-        map[2]=row3.toCharArray();
-        map[3]=row4.toCharArray();
-        int N=1;
-        int X=1;
-        int Y=2;
-        Node startNode = new Node(map,X,Y);
-        BreadthFirstSearch bfs = new BreadthFirstSearch(startNode, map);
-        System.out.println(bfs.compute());
-        
+        Scanner in = new Scanner(System.in);
+        int L = in.nextInt();
+        int H = in.nextInt();
+        in.nextLine();
+        ArrayList<String> rows = new ArrayList<>();
+        for (int i = 0; i < H; i++) {
+            rows.add(in.nextLine());
+        }
+        int N = in.nextInt();
+        for (int k = 0; k < N; k++) {
+            int X = in.nextInt();
+            int Y =in.nextInt();
+            char[][] map = new char[H][L] ;
+            for(int j=0;j<H;j++)
+                map[j]=rows.get(j).toCharArray();
+            Node startNode = new Node(map,X,Y);
+            BreadthFirstSearch bfs = new BreadthFirstSearch(startNode, map);
+            System.out.println(bfs.compute());
+        }
     }
-    
 }
